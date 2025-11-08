@@ -7,6 +7,8 @@ Convert terrain textures into Unity-format splatmaps using intelligent perceptua
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 
+![Img2Splat GUI Screenshot](Img2Splat-gui-screenshot.png)
+
 ## ✨ Features
 
 - 🎨 **Perceptual Color Matching** - Uses CIELAB color space for accurate terrain texture analysis
@@ -150,17 +152,13 @@ Each palette supports up to 8 layers (Unity's splatmap limit).
 - **CPU matters** - The tool uses multi-threaded processing across all available CPU cores
 - **Don't panic if the GUI freezes** - It's working! Check your CPU usage to confirm
 
-## 📸 Screenshots
+## 📸 Output
 
-### GUI Mode
-The GUI provides an intuitive interface with live preview capabilities:
-- Load and preview terrain textures
-- Select from built-in palettes or load custom ones
-- Adjust generation parameters
-- Preview generated splatmaps
-- Click previews to view at full resolution
+The tool generates Unity-ready splatmaps:
+- **GUI Mode** - Interactive interface with live preview and full-resolution viewing
+- **CLI Mode** - Fast batch processing for automation
 
-### Generated Output
+### Generated Files
 - **splatmap_0.png** - RGBA containing layers 0-3
 - **splatmap_1.png** - RGBA containing layers 4-7
 - Individual layer previews (grayscale weight maps)

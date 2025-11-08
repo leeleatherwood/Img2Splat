@@ -55,12 +55,14 @@ python Img2Splat.py
 ```
 
 **GUI Workflow:**
-1. Click **"Load Texture"** to select your terrain texture
+1. Click **"Load Texture"** to select your terrain texture (try `example/example_terrain_texture.png`)
 2. Choose a palette from the dropdown or **"Load Palette"** for custom JSON
 3. Adjust sample size and splatmap resolution (optional)
 4. Click **"Generate Splatmaps"** 
 5. Preview the results (click to view full size)
 6. Click **"Save Splatmaps"** to export
+
+> **⚠️ Performance Note:** This application is **VERY CPU-intensive** during splatmap generation. The GUI may appear to freeze or become unresponsive while processing - this is completely normal. Just let it run! Processing time depends on texture size, sample size, and your CPU. Larger textures or smaller sample sizes will take longer. The application is working hard in the background using multi-threaded processing.
 
 ### Command-Line Mode
 
@@ -73,11 +75,14 @@ python Img2Splat.py <texture_file> --palette <palette_file> [options]
 **Examples:**
 
 ```bash
+# Try the included example texture
+python Img2Splat.py example/example_terrain_texture.png --palette palettes/lush.json
+
 # Basic usage with default settings
 python Img2Splat.py terrain_texture.png --palette palettes/lush.json
 
 # Custom output directory and settings
-python Img2Splat.py my_terrain.jpg --palette palettes/mars.json --output ./output --sample-size 16 --splatmap-size 2048
+python Img2Splat.py example/example_terrain_texture.png --palette palettes/mars.json --output ./output --sample-size 16 --splatmap-size 2048
 
 # Specify custom output filenames
 python Img2Splat.py terrain.png --palette custom.json --splatmap0 my_splatmap_0.png --splatmap1 my_splatmap_1.png
@@ -135,6 +140,15 @@ Each palette supports up to 8 layers (Unity's splatmap limit).
 4. **Layer Assignment** - Each tile assigned to closest palette color using Euclidean distance
 5. **Weight Map Generation** - Creates 8 grayscale weight maps (one per layer)
 6. **Splatmap Packing** - Combines into two RGBA images (4 layers each) for Unity
+
+## ⚡ Performance Tips
+
+- **Use larger sample sizes** (16 or 32) for faster generation with slightly lower accuracy
+- **Use smaller sample sizes** (4 or 8) for maximum detail but longer processing times
+- **Start with 1024×1024 splatmaps** before trying larger sizes
+- **Be patient!** Large textures (4K+) with small sample sizes can take several minutes
+- **CPU matters** - The tool uses multi-threaded processing across all available CPU cores
+- **Don't panic if the GUI freezes** - It's working! Check your CPU usage to confirm
 
 ## 📸 Screenshots
 
